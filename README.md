@@ -1,34 +1,108 @@
-# Instructions
+# Mock Drive-Thru AI Ordering System
 
-Create a mock drive thru ordering system that allows users to place and cancel their orders using AI.
+An intelligent drive-thru ordering system powered by GPT-4o, allowing customers to place and manage food orders using natural language.
 
-![Example UI](./image.png)
+## Features
 
-For this project, assume the order item options are either 1) burgers, 2) fries, or 3) drinks. 
+- Natural language order processing
+- Support for multiple items and quantities
+- Real-time order tracking
+- Order cancellation functionality
+- Multi-item order support (burgers, fries, drinks)
+- Error handling
+- Order history display
 
-These are examples of user inputs and the corresponding actions to take:
-* "I would like to order a burger" -> order of 1 burger
-* "My friend and I would each like a fries and a drink" -> order for 2 fries, 2 drinks
-* "Please cancel my order, order #2" -> cancel order #2
+## Tech Stack
 
-You will need an LLM to figure out the actions, you cant just search the text for keywords in general. You can assume every user input is either for an order and includes the items to order, or a cancellation with the order number to cancel, but the exact text and structure of the sentences could vary.
+### Backend
+- OpenAI GPT-4o-mini
+- FastAPI
+- Uvicorn (ASGI server)
+- Pydantic
 
-# Setup
+### Frontend
+- Svelte
+- Tailwind CSS
+## Screenshots
 
-See backend/README.md and frontend/README.md for setup instructions
+### Interface
+![Page UI](pageShot.png)
 
-# Criteria
+### Error Handling
+![Page UI](dialogShot.png)
 
-1. Create a UI in Svelte that shows the total number of items that have been ordered, a list of placed orders and has a single text box for new user requests
-2. Implement a backend using FastAPI that uses OpenAI's function calling to allow users to place or cancel their orders
-3. Orders can contain one or multiple items and 1 or multiple quantities of each item
-4. Placing or cancelling orders should be reflected in the UI
 
-# Other Considerations
 
-Please think through and be able to talk about the following considerations:
+## System Architecture
 
-* validating user inputs
-* multi-tenant access
-* extensibility for example, new functions being added
-* testing and reliability
+- RESTful API backend with FastAPI
+- Real-time order processing using GPT-4
+- Single-page application frontend with Svelte
+- JSON-based communication between frontend and backend
+
+## Setup Instructions
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
+
+2. Install dependencies:
+```bash
+poetry install
+```
+
+4. Set up your OpenAI API key in 'backend/.env'
+```bash
+OPENAI_API_KEY='your-api-key-here'
+```
+
+5. Start the backend server:
+```bash
+poetry run uvicorn main:app 
+```
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+## Example Usage
+
+### Placing Orders
+- "I would like to order a burger"
+- "My friend and I would each like a fries and a drink"
+- "Three burgers and two drinks please"
+
+### Canceling Orders
+- "Please cancel my order, order #2"
+- "Cancel orders #2 and #3"
+- "Cancel all orders"
+
+
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Submit a pull request
+
+## License
+
+MIT License
